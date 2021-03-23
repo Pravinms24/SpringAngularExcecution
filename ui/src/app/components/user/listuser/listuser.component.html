@@ -1,0 +1,47 @@
+<layout menu="home"></layout>
+
+<div id="list-user" class="content scaffold-list" role="main"></div>
+<h4>User List <small> <span class="badge badge-pill badge-secondary">{{total}} </span> </small></h4>
+<div class="col-sm-10 table" align="center">
+<table mdbTable hover="true" >
+    <thead >
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let user of userList | paginate: { itemsPerPage: itemPerPage, currentPage: page, totalItems: total };let i=index">
+        <!-- <td>{{(itemPerPage*(page-1))+(i+1)}}</td> -->
+          <td title="{{user.email}}">
+            <a (click)="view(user.id)">
+            {{user.email}}
+          </a>
+          </td>
+        <td>{{user.fullname}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" [checked]="user.enabled">
+            <span class="slider round"></span>
+          </label>
+        </td>
+        <!-- <td>
+          <div class="custom-control custom-switch">
+            <input type="checkbox"  [checked] = "user.enabled" class="custom-control-input" id="customSwitches">
+            <label class="custom-control-label" disabled="true" for="customSwitches"></label>
+          </div>
+        </td> -->
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="8"><pagination-controls
+            (pageChange)="pageChanged($event)"></pagination-controls></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+
+

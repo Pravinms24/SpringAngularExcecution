@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="logback.xsd">
+    <property file="${angularjava.config.location}/application.properties"/>
+	<!-- 
+	    <property file="/home/pravin/Documents/rnd_repo/ce-review/src/main/resources/cereview.properties"/>
+	 -->
+     
+
+    <appender name="FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logging.filepath}/${logging.file}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logging.filepath}/${logging.file}.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger:%line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger:%line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.springframework" level="${logging.level.org.springframework}" />
+    <logger name="com.project.angularjava" level="${logging.level.com.project.angularjava}" />
+    <logger name="org.hibernate" level="${logging.level.org.hibernate}" />
+    <logger name="org.hibernate.validator" level="ERROR" />
+
+
+    <root level="${logging.level.root}">
+      <!-- <appender-ref ref="STDOUT" />  -->  
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

@@ -1,0 +1,36 @@
+<div>
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="logo-section">
+        <a class="navbar-brand" href="#">
+          <img src="./assets/images/homeicon.png" width="30" height="30" />
+          <small class="txt-check">EXECUTION UI</small> &nbsp;
+          <small class="txt-check-xs">{{ applicationVersion }}</small>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-3; dropdown-section">
+      <div class="dropdown">
+        <button class="btn btn shadow-none dropdown-toggle rounded-0 fa fa-user" style="color: #28a745" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hi {{userName}} 
+		  <span class="caret"></span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+          <button class="dropdown-item" type="button" (click)="resetPassword()">
+            <i class="fa fa-key" aria-hidden="true"></i>
+            &nbsp; Reset Password
+          </button>
+
+          <button class="dropdown-item" type="button" (click)="logout()">
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+            &nbsp; Logout
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

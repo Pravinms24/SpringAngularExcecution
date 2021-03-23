@@ -1,0 +1,195 @@
+<div class="card bg-light mb-3" style="max-width: 75rem; margin-left: 10%;      
+    margin-right: 10%; margin-top: 6%; margin-bottom:12%
+;    width: auto;">
+  <div class="card-body">
+  
+<div class="container-fluid">
+  <h2>Please Login...</h2>
+  <form [formGroup]="registrationForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Full Name</label>
+      <input
+        [class.is-invalid]="
+          registrationForm.get('fullname').invalid &&
+          registrationForm.get('fullname').touched
+        "
+        formControlName="fullname"
+        type="fullname"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+      />
+      <div
+        *ngIf="
+          registrationForm.get('fullname').invalid &&
+          registrationForm.get('fullname').touched
+        "
+      >
+        <small
+          *ngIf="registrationForm.get('fullname').errors?.required"
+          class="text-danger"
+        >
+          Name is required.
+        </small>
+        <small
+          *ngIf="registrationForm.get('fullname').errors?.minlength"
+          class="text-danger"
+        >
+          Email id must be 5 characters.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        [class.is-invalid]="
+          registrationForm.get('email').invalid &&
+          registrationForm.get('email').touched
+        "
+        formControlName="email"
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+      />
+      <div
+        *ngIf="
+          registrationForm.get('email').invalid &&
+          registrationForm.get('email').touched
+        "
+      >
+        <small
+          *ngIf="registrationForm.get('email').errors?.required"
+          class="text-danger"
+        >
+          Email id is required.
+        </small>
+        <small
+          *ngIf="registrationForm.get('email').errors?.minlength"
+          class="text-danger"
+        >
+          Email id must be 5 characters.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        formControlName="password"
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Confirm Password</label>
+      <input
+        formControlName="confirmPassword"
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Confirm Password"
+      />
+        <div>
+        <small *ngIf="registrationForm.hasError('passwordNotSame')"
+          class="text-danger"
+        >
+          Password Not Same.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Phone Number</label>
+      <input
+        formControlName="phoneNumber"
+        type="phoneNumber"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Enter Phone Number"
+      />
+    </div>
+
+    <div class="form-check">
+      <input formControlName="enabled"  class="form-control" type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1"> Active</label>
+    </div>
+
+    <div formGroupName="address">
+      <div class="form-group">
+        <label for="exampleInputEmail1">City</label>
+        <input
+          formControlName="city"
+          type="city"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter city"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">State</label>
+        <input
+          formControlName="state"
+          type="state"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Enter State"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Country</label>
+        <input
+          formControlName="country"
+          type="country"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Enter Country"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Postal Code</label>
+        <input
+          formControlName="postalCode"
+          type="postalCode"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Enter Postal Code"
+        />
+      </div>
+
+      <button
+        (click)="RegisterUser(registrationForm.value)"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Register
+      </button>
+
+
+            <!--
+      <button (click)="loadApiData()" type="submit" class="btn btn-secondary">
+        Clear
+      </button>
+      -->
+
+      <button (click)="onReset()" type="submit" class="btn btn-secondary">
+        Clear
+      </button>
+      
+
+    </div>
+  </form>
+</div>
+{{ registrationForm.value | json }}
+
+  </div>

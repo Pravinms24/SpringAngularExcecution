@@ -1,0 +1,19 @@
+cont {
+    width: 120%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fieldcontain {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    }
+
+    .required-indicator {
+        color: #48802C;
+        display: inline-block;
+        font-weight: bold;
+        margin-left: 0.3em;
+        position: relative;
+        top: 0.1em;
+        }
